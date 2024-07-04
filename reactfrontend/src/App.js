@@ -10,7 +10,7 @@ function App() {
   useEffect(()=>{
     async function getAllStudents(){
       try{
-        const students = await axios.get("http://127.0.0.1:8000/api/student/")
+        const students = await axios.get("http://127.0.0.1:8000/api/student")
         console.log(students.data)
         setStudents(students.data)
       }catch(error){
@@ -22,6 +22,13 @@ function App() {
   return (
     <div className="App">
     <h1>Connect Reat With Django</h1>
+    {
+      students.map((student,i)=>{
+        return(
+        <h1 key={i}> {student.name} {student.email}</h1>
+        )
+      })
+    }
     </div>
   );
 }
